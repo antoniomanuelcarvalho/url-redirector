@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="popup.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <img src="logo.png" alt="Logo" class="logo" />
+            <h2>Frontend Tips - URL Redirector</h2>
+        </div>
+
+        <!-- Group Management -->
+        <div class="group-management">
+            <div class="group-controls">
+                <label for="group-name">Group Name:</label>
+                <input type="text" id="group-name" placeholder="Enter group name" />
+                <button id="create-group">Create Group</button>
+            </div>
+            <div id="groups-list"></div>
+        </div>
+
+        <!-- Rule Form -->
+        <div class="rule-form">
+            <h3>Add/Edit Rule</h3>
+            <div class="form-group">
+                <label for="group-select">Group:</label>
+                <select id="group-select">
+                    <option value="">Select a group</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="pattern">URL Contains:</label>
+                <div class="field-container">
+                    <input type="text" id="pattern" placeholder="YourApplication.YourFilename" />
+                    <small>Enter text that should be contained in the URL</small>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="redirect">Redirect To:</label>
+                <div class="field-container">
+                    <input type="text" id="redirect" placeholder="http://your-replacement-filename" />
+                    <small>URL to redirect matching requests to</small>
+                </div>
+            </div>
+
+            <div class="form-group checkbox-group">
+                <input type="checkbox" id="enabled" checked />
+                <label for="enabled">Enable this rule</label>
+            </div>
+
+            <div class="form-status" id="form-status" style="display: none;">
+                <small>Form data saved automatically</small>
+            </div>
+
+            <div class="buttons">
+                <button id="save">Save Rule</button>
+                <button id="cancel" style="display: none;">Cancel Edit</button>
+                <button id="clear-form">Clear Form</button>
+                <button id="clear">Clear All</button>
+            </div>
+
+            <input type="hidden" id="editing-rule-id" value="" />
+        </div>
+
+    </div>
+
+    <script src="popup.js"></script>
+</body>
+
+</html>

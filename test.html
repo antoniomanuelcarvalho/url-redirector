@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Extension Test Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        .test-section {
+            margin: 20px 0;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .success {
+            background-color: #d4edda;
+            border-color: #c3e6cb;
+        }
+
+        .error {
+            background-color: #f8d7da;
+            border-color: #f5c6cb;
+        }
+
+        button {
+            padding: 10px 15px;
+            margin: 5px;
+            cursor: pointer;
+        }
+
+        #log {
+            background: #f8f9fa;
+            padding: 10px;
+            border-radius: 3px;
+            font-family: monospace;
+            white-space: pre-wrap;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>URL Redirector Extension Test</h1>
+
+    <div class="test-section">
+        <h3>Test JavaScript File Redirect</h3>
+        <p>This will try to load a JavaScript file that should be redirected by your extension.</p>
+        <button onclick="testJSRedirect()">Test JS Redirect</button>
+        <div id="js-result"></div>
+    </div>
+
+    <div class="test-section">
+        <h3>Test CSS File Redirect</h3>
+        <p>This will try to load a CSS file that should be redirected by your extension.</p>
+        <button onclick="testCSSRedirect()">Test CSS Redirect</button>
+        <div id="css-result"></div>
+    </div>
+
+    <div class="test-section">
+        <h3>Test Image Redirect</h3>
+        <p>This will try to load an image that should be redirected by your extension.</p>
+        <button onclick="testImageRedirect()">Test Image Redirect</button>
+        <div id="image-result"></div>
+    </div>
+
+    <div class="test-section">
+        <h3>Console Log</h3>
+        <div id="log"></div>
+        <button onclick="clearLog()">Clear Log</button>
+    </div>
+
+    <script>
+        function log(message) {
+            const logDiv = document.getElementById('log');
+            logDiv.textContent += new Date().toLocaleTimeString() + ': ' + message + '\n';
+        }
+
+        function clearLog() {
+            document.getElementById('log').textContent = '';
+        }
+
+        function testJSRedirect() {
+            log('Testing JavaScript redirect...');
+            const script = document.createElement('script');
+            script.src = 'https://example.com/SmartUtils_Lib.SmartLibrary.js';
+            script.onload = function () {
+                log('✓ JavaScript loaded successfully (redirect may have worked)');
+                document.getElementById('js-result').innerHTML = '<div class="success">✓ JavaScript loaded</div>';
+            };
+            script.onerror = function () {
+                log('✗ JavaScript failed to load');
+                document.getElementById('js-result').innerHTML = '<div class="error">✗ JavaScript failed to load</div>';
+            };
+            document.head.appendChild(script);
+        }
+
+        function testCSSRedirect() {
+            log('Testing CSS redirect...');
+            const link = document.createElement('link');
+            link.rel = 'stylesheet';
+            link.href = 'https://example.com/SmartUtils_Lib.SmartLibrary.css';
+            link.onload = function () {
+                log('✓ CSS loaded successfully (redirect may have worked)');
+                document.getElementById('css-result').innerHTML = '<div class="success">✓ CSS loaded</div>';
+            };
+            link.onerror = function () {
+                log('✗ CSS failed to load');
+                document.getElementById('css-result').innerHTML = '<div class="error">✗ CSS failed to load</div>';
+            };
+            document.head.appendChild(link);
+        }
+
+        function testImageRedirect() {
+            log('Testing Image redirect...');
+            const img = document.createElement('img');
+            img.src = 'https://example.com/SmartUtils_Lib.SmartLibrary.png';
+            img.onload = function () {
+                log('✓ Image loaded successfully (redirect may have worked)');
+                document.getElementById('image-result').innerHTML = '<div class="success">✓ Image loaded</div>';
+            };
+            img.onerror = function () {
+                log('✗ Image failed to load');
+                document.getElementById('image-result').innerHTML = '<div class="error">✗ Image failed to load</div>';
+            };
+            document.body.appendChild(img);
+        }
+
+        // Log initial message
+        log('Extension test page loaded. Open Developer Tools > Network tab to see requests.');
+        log('Also check chrome://extensions/ > your extension > background page for logs.');
+    </script>
+</body>
+
+</html>
