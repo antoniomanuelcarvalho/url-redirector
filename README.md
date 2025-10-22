@@ -2,6 +2,8 @@
 
 A powerful browser extension that redirects HTTP requests based on URL patterns, organized in groups for easy management. This extension uses minimal permissions to ensure wide compatibility and avoid blocking by IT departments.
 
+**GitHub Repository**: [https://github.com/antoniomanuelcarvalho/url-redirector](https://github.com/antoniomanuelcarvalho/url-redirector)
+
 ## Features
 
 - **Group-Based Organization**: Organize redirect rules into named groups for better management
@@ -17,7 +19,10 @@ A powerful browser extension that redirects HTTP requests based on URL patterns,
 
 ### For Development/Testing
 
-1. Download or clone this repository
+1. **Clone the repository**:
+   ```bash
+   git clone https://github.com/antoniomanuelcarvalho/url-redirector.git
+   ```
 2. Open Chrome and navigate to `chrome://extensions/`
 3. Enable "Developer mode" in the top right corner
 4. Click "Load unpacked" and select the extension folder
@@ -176,6 +181,15 @@ This extension:
 - Processes redirects locally in the browser
 - Stores rules locally using Chrome's storage API
 - No external network requests for rule processing
+
+## Contributing
+
+This project is open source and welcomes contributions!
+
+- **GitHub Repository**: [https://github.com/antoniomanuelcarvalho/url-redirector](https://github.com/antoniomanuelcarvalho/url-redirector)
+- **Issues**: Report bugs or request features on GitHub
+- **Pull Requests**: Submit improvements and new features
+- **Documentation**: Help improve the README and documentation
 
 ## License
 
